@@ -1,0 +1,4 @@
+[Mon Jul  6 22:59:21 2026] REALTIME ALERT - EventID: 4625 | Vector: [4625, 212, 0, 0, 1]
+[Mon Jul  6 22:59:22 2026] REALTIME ALERT - EventID: 4625 | Vector: [4625, 212, 0, 0, 2]
+[Mon Jul  6 22:59:23 2026] REALTIME ALERT - EventID: 4625 | Vector: [4625, 212, 0, 0, 3]
+[Mon Jul  6 22:59:23 2026] REALTIME ALERT - EventID: 4625 | Vector: [4625, 212, 0, 0, 4]

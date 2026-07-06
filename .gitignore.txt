@@ -1,0 +1,9 @@
+# Bỏ qua dữ liệu log mẫu và nhật ký sự cố
+windows_security_dataset.csv
+incident_alerts.txt
+
+# Bỏ qua các file cấu hình môi trường ảo Python (nếu có)
+venv/
+.venv/
+__pycache__/
+*.pyc
