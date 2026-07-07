@@ -30,3 +30,8 @@
 2026-07-06 23:11:48,610 - INFO - [✔ Bình thường] Mon Jul  6 23:11:47 2026 | Event ID: 5379
 2026-07-06 23:11:52,421 - INFO - 
 [!] Đã dừng hệ thống giám sát Realtime.
+[Tue Jul  7 22:15:29 2026] Dashboard Alert - EventID: 4625
+[Tue Jul  7 22:15:32 2026] Dashboard Alert - EventID: 4625
+[Tue Jul  7 22:15:33 2026] Dashboard Alert - EventID: 4625
+[Tue Jul  7 22:15:35 2026] Dashboard Alert - EventID: 4625
+[Tue Jul  7 22:15:36 2026] Dashboard Alert - EventID: 4625

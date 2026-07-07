@@ -1,26 +1,69 @@
-import pandas as pd  # Thư viện Pandas xử lý bảng dữ liệu log 
+import win32evtlog
+import pandas as pd
+import os
 
-# 1. Đọc file log CSV (Giả sử bạn có file 'windows_logs.csv' trong thư mục)
-# Nếu chưa có file, bạn có thể tạo một file CSV giả lập để test trước
-try:
-    df = pd.read_csv("windows_logs.csv")
-    print("--- Đọc file log thành công! ---")
+def export_windows_security_logs(output_file="windows_security_dataset.csv", max_records=5000):
+    print("🔄 Đang kết nối và đọc Windows Security Log (Vui lòng chờ)...")
+    server = 'localhost'
+    log_type = 'Security'
     
-    # Hiển thị 5 dòng log đầu tiên để kiểm tra cấu trúc [cite: 9]
-    print("\n5 dòng log đầu tiên:")
-    print(df.head())
-    
-    # 2. Lọc và đếm các Event ID quan trọng [cite: 14]
-    # Ví dụ: Event ID 4625 là đăng nhập thất bại [cite: 14]
-    if 'EventID' in df.columns:
-        login_failures = df[df['EventID'] == 4625]
-        print(f"\nSố lượng sự kiện đăng nhập thất bại (Event ID 4625): {len(login_failures)}")
+    try:
+        hand = win32evtlog.OpenEventLog(server, log_type)
+        # Đọc từ log mới nhất trở về trước (Backwards)
+        flags = win32evtlog.EVENTLOG_BACKWARDS_READ | win32evtlog.EVENTLOG_SEQUENTIAL_READ
         
-        # Thống kê tổng số lượng theo từng Event ID
-        print("\nThống kê số lượng theo từng Event ID:")
-        print(df['EventID'].value_counts())
-    else:
-        print("\nKhông tìm thấy cột 'EventID' trong file log.")
+        log_list = []
+        suspicious_keywords = ["failed", "denied", "error", "unauthorized", "administrator", "root"]
+        
+        while True:
+            events = win32evtlog.ReadEventLog(hand, flags, 0)
+            if not events or len(log_list) >= max_records:
+                break
+                
+            for event in events:
+                if len(log_list) >= max_records:
+                    break
+                    
+                event_id = event.EventID & 0xFFFF
+                data = event.StringInserts
+                message_str = ", ".join(data) if data else ""
+                message_lower = message_str.lower()
+                
+                # Trích xuất các đặc trưng giống như mô hình AI yêu cầu
+                log_length = len(message_str)
+                keyword_count = sum(1 for word in suspicious_keywords if word in message_lower)
+                is_admin = 1 if "administrator" in message_lower else 0
+                
+                log_list.append({
+                    "EventID": event_id,
+                    "Log_Length": log_length,
+                    "Suspicious_Keywords": keyword_count,
+                    "Is_Admin_Action": is_admin
+                })
+                
+        if len(log_list) == 0:
+            print("❌ Không tìm thấy log nào. Bạn đã chạy Command Prompt bằng quyền Administrator chưa?")
+            return
+            
+        # Tạo DataFrame ban đầu (đang ở dạng từ Mới đến Cũ)
+        df = pd.DataFrame(log_list)
+        
+        # SỬA LỖI LOGIC: Đảo ngược lại để dữ liệu chạy từ Cũ đến Mới (đúng trục thời gian tuyến tính)
+        df = df.iloc[::-1].reset_index(drop=True)
+        
+        # Tính toán Tần suất tăng dần (tương thích hoàn hảo với luồng quét Realtime)
+        df['Event_Frequency'] = df.groupby('EventID').cumcount() + 1
+        
+        # Đảm bảo thứ tự các cột khớp 100% với features của IsolationForest
+        features_order = ['EventID', 'Log_Length', 'Suspicious_Keywords', 'Is_Admin_Action', 'Event_Frequency']
+        df = df[features_order]
+        
+        # Lưu file CSV
+        df.to_csv(output_file, index=False)
+        print(f"🎉 Successfully Exported! Đã xuất thành công {len(df)} dòng dữ liệu thật vào file `{output_file}`.")
+        
+    except Exception as e:
+        print(f"❌ Lỗi: {e}. Vui lòng kiểm tra quyền Administrator!")
 
-except FileNotFoundError:
-    print("Chưa tìm thấy file 'windows_logs.csv'. Hãy kiểm tra lại đường dẫn!")
+if __name__ == "__main__":
+    export_windows_security_logs()
