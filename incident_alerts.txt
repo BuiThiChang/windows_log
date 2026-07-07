@@ -2,3 +2,31 @@
 [Mon Jul  6 22:59:22 2026] REALTIME ALERT - EventID: 4625 | Vector: [4625, 212, 0, 0, 2]
 [Mon Jul  6 22:59:23 2026] REALTIME ALERT - EventID: 4625 | Vector: [4625, 212, 0, 0, 3]
 [Mon Jul  6 22:59:23 2026] REALTIME ALERT - EventID: 4625 | Vector: [4625, 212, 0, 0, 4]
+2026-07-06 23:11:28,444 - INFO - ============================================================
+2026-07-06 23:11:28,445 - INFO -    HỆ THỐNG GIÁM SÁT AI REALTIME (CHỈ LẮNG NGHE SỰ KIỆN MỚI)
+2026-07-06 23:11:28,445 - INFO - ============================================================
+2026-07-06 23:11:28,447 - WARNING - [!] Không tìm thấy tập dữ liệu nền tảng. Chạy chế độ Online Learning.
+2026-07-06 23:11:28,508 - INFO - [✔] Hiện tại hệ thống đang có sẵn 29203 log lịch sử.
+2026-07-06 23:11:28,508 - INFO - [👉] Đang nhảy tới cuối dòng sự kiện để đợi các log mới tinh...
+2026-07-06 23:11:28,509 - INFO - ------------------------------------------------------------
+2026-07-06 23:11:40,060 - INFO - [✔ Bình thường] Mon Jul  6 23:11:38 2026 | Event ID: 5379
+2026-07-06 23:11:40,060 - INFO - [✔ Bình thường] Mon Jul  6 23:11:38 2026 | Event ID: 5379
+2026-07-06 23:11:40,061 - INFO - [✔ Bình thường] Mon Jul  6 23:11:38 2026 | Event ID: 5379
+2026-07-06 23:11:40,061 - INFO - [✔ Bình thường] Mon Jul  6 23:11:38 2026 | Event ID: 5379
+2026-07-06 23:11:40,062 - INFO - [✔ Bình thường] Mon Jul  6 23:11:38 2026 | Event ID: 4798
+2026-07-06 23:11:42,071 - WARNING - [🚨 CẢNH BÁO BẤT THƯỜNG] Mon Jul  6 23:11:40 2026 | Event ID: 4625 -> Hành vi dị biệt dồn dập! | Vector: [4625, 212, 0, 0, 1]
+2026-07-06 23:11:43,579 - WARNING - [🚨 CẢNH BÁO BẤT THƯỜNG] Mon Jul  6 23:11:42 2026 | Event ID: 4625 -> Hành vi dị biệt dồn dập! | Vector: [4625, 212, 0, 0, 2]
+2026-07-06 23:11:44,586 - WARNING - [🚨 CẢNH BÁO BẤT THƯỜNG] Mon Jul  6 23:11:43 2026 | Event ID: 4625 -> Hành vi dị biệt dồn dập! | Vector: [4625, 212, 0, 0, 3]
+2026-07-06 23:11:47,601 - INFO - [✔ Bình thường] Mon Jul  6 23:11:46 2026 | Event ID: 4648
+2026-07-06 23:11:47,601 - INFO - [✔ Bình thường] Mon Jul  6 23:11:46 2026 | Event ID: 4624
+2026-07-06 23:11:47,602 - INFO - [✔ Bình thường] Mon Jul  6 23:11:46 2026 | Event ID: 4624
+2026-07-06 23:11:47,602 - INFO - [✔ Bình thường] Mon Jul  6 23:11:46 2026 | Event ID: 4672
+2026-07-06 23:11:47,602 - INFO - [✔ Bình thường] Mon Jul  6 23:11:46 2026 | Event ID: 4672
+2026-07-06 23:11:47,603 - INFO - [✔ Bình thường] Mon Jul  6 23:11:46 2026 | Event ID: 4634
+2026-07-06 23:11:47,603 - INFO - [✔ Bình thường] Mon Jul  6 23:11:46 2026 | Event ID: 4634
+2026-07-06 23:11:48,608 - INFO - [✔ Bình thường] Mon Jul  6 23:11:47 2026 | Event ID: 5379
+2026-07-06 23:11:48,609 - INFO - [✔ Bình thường] Mon Jul  6 23:11:47 2026 | Event ID: 5379
+2026-07-06 23:11:48,610 - INFO - [✔ Bình thường] Mon Jul  6 23:11:47 2026 | Event ID: 5379
+2026-07-06 23:11:48,610 - INFO - [✔ Bình thường] Mon Jul  6 23:11:47 2026 | Event ID: 5379
+2026-07-06 23:11:52,421 - INFO - 
+[!] Đã dừng hệ thống giám sát Realtime.
